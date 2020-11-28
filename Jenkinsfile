@@ -16,5 +16,10 @@ pipeline {
                 sh 'mvn test' 
             }
         }
+        stage('Deliver') { 
+            steps {
+                sh 'find . -name \"*.jar\"'
+            }
+        }
     }
 }

@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh 'find . -name \"*.jar\"'
+                sh 'find . -name \"*.war\"'
             }
         }
     }

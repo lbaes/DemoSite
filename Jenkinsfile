@@ -23,34 +23,34 @@ pipeline {
             }
         }
 
-        stage ('Building Images') {
+        stage ('Building Tag and Push to Docker Hub') {
             steps {
-                echo 'Building site image'
+                echo 'build and push site image'
                 script {
                     def siteImage = docker.build("lbaes/loja:site", "./site")
                     docker.withRegistry( '', registryCredential ) {
                         siteImage.push()
                     }
                 }
-                echo 'Finished building site image'
+                echo 'site finished'
 
-                echo 'Build admin image'
+                echo 'build and push admin image'
                 script {
                     def adminImage = docker.build("lbaes/loja:admin", "./admin")
                     docker.withRegistry( '', registryCredential ) {
                         adminImage.push()
                     }
                 }
-                echo 'Finished building admin image'
+                echo 'admin finished'
 
-                echo 'Building api image'
+                echo 'build and push api image'
                 script {
                     def apiImage = docker.build("lbaes/loja:api", "./api")
                     docker.withRegistry( '', registryCredential ) {
                         apiImage.push()
                     }
                 }
-                echo 'Finished building api image'
+                echo 'api finished'
             }
         }
     }

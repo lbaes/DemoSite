@@ -24,19 +24,19 @@ pipeline {
             steps {
                 echo 'Building site image'
                 script {
-                    def siteImage = docker.build("loja-site:latest", "./site/Dockerfile")
+                    def siteImage = docker.build("loja-site:latest", "./site")
                 }
                 echo 'Finished building site image'
 
                 echo 'Build admin image'
                 script {
-                    def adminImage = docker.build("loja-admin:latest", "./admin/Dockerfile")
+                    def adminImage = docker.build("loja-admin:latest", "./admin")
                 }
                 echo 'Finished building admin image'
 
                 echo 'Building api image'
                 script {
-                    def apiImage = docker.build("loja-api:latest", "./api/Dockerfile")
+                    def apiImage = docker.build("loja-api:latest", "./api")
                 }
                 echo 'Finished building api image'
             }

@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2'
+            args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
@@ -22,6 +22,7 @@ pipeline {
 
         stage ('Building Images') {
             steps {
+
                 echo 'Building site image'
                 sh 'docker build -t loja-site:latest site/target/Dockerfile'
                 echo 'Finished building site image'

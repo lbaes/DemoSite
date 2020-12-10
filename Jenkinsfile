@@ -36,7 +36,7 @@ pipeline {
 
                 echo 'Building api image'
                 node {
-                    def apiImage = docker.build("apiImage:latest", "./api/Dockerfile")
+                    def apiImage = docker.build("loja-api:latest", "./api/Dockerfile")
                 }
                 echo 'Finished building api image'
             }

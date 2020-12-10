@@ -23,7 +23,7 @@ pipeline {
             }
         }
 
-        stage ('Building Tag and Push to Docker Hub') {
+        stage ('Building tagging and pushing to DockerHub') {
             steps {
                 echo 'build and push site image'
                 script {

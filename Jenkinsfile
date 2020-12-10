@@ -9,7 +9,7 @@ pipeline {
         }
     }
     stages {
-        stage('Build') { 
+        stage('Maven Build') { 
             steps {
                 echo 'Starting application build'
                 sh 'mvn -B -DskipTests clean package' 

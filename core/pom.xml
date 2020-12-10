@@ -46,9 +46,10 @@
             <groupId>com.broadleafcommerce</groupId>
             <artifactId>broadleaf-boot-starter-database</artifactId>
         </dependency>
-	<dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+
     </dependencies>
 </project>

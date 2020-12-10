@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock'
+            args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
         }
     }
     stages {
@@ -33,7 +33,7 @@ pipeline {
                 echo 'Finished building admin image'
 
                 echo 'Building api image'
-                sh 'docker build -t loja-admin:latest api/target/Dockerfile'
+                sh 'docker build -t loja-api:latest api/target/Dockerfile'
                 echo 'Finished building api image'
             }
         }

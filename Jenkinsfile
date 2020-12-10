@@ -22,18 +22,22 @@ pipeline {
 
         stage ('Building Images') {
             steps {
-
                 echo 'Building site image'
-                sh 'docker build -t loja-site:latest site/target/Dockerfile'
+                node {
+                    def siteImage = docker.build("loja-site:latest", "./site/Dockerfile")
+                }
                 echo 'Finished building site image'
 
-
                 echo 'Build admin image'
-                sh 'docker build -t loja-admin:latest admin/target/Dockerfile'
+                node {
+                    def adminImage = docker.build("loja-admin:latest", "./admin/Dockerfile")
+                }
                 echo 'Finished building admin image'
 
                 echo 'Building api image'
-                sh 'docker build -t loja-api:latest api/target/Dockerfile'
+                node {
+                    def apiImage = docker.build("apiImage:latest", "./api/Dockerfile")
+                }
                 echo 'Finished building api image'
             }
         }

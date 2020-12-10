@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+        registryCredential = 'dockerHub'
+    }
     agent {
         docker {
             image 'maven:3.6.3-openjdk-11' 
@@ -24,27 +27,30 @@ pipeline {
             steps {
                 echo 'Building site image'
                 script {
-                    def siteImage = docker.build("loja-site:latest", "./site")
+                    def siteImage = docker.build("lbaes/loja:site", "./site")
+                    docker.withRegistry( '', registryCredential ) {
+                        siteImage.push()
+                    }
                 }
                 echo 'Finished building site image'
 
                 echo 'Build admin image'
                 script {
-                    def adminImage = docker.build("loja-admin:latest", "./admin")
+                    def adminImage = docker.build("lbaes/loja:admin", "./admin")
+                    docker.withRegistry( '', registryCredential ) {
+                        adminImage.push()
+                    }
                 }
                 echo 'Finished building admin image'
 
                 echo 'Building api image'
                 script {
-                    def apiImage = docker.build("loja-api:latest", "./api")
+                    def apiImage = docker.build("lbaes/loja:api", "./api")
+                    docker.withRegistry( '', registryCredential ) {
+                        apiImage.push()
+                    }
                 }
                 echo 'Finished building api image'
-            }
-        }
-
-        stage ('Delivering images') {
-            steps {
-                echo 'TODO'
             }
         }
     }

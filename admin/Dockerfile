@@ -8,4 +8,4 @@ EXPOSE 8081
 
 ENV JAVA_OPTS "-Xms128m -Xmx1536m"
 
-java ${JAVA_OPTS} -jar "/usr/src/app/admin.jar"
+# java ${JAVA_OPTS} -jar "/usr/src/app/admin.jar"

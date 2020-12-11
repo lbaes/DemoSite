@@ -10,4 +10,4 @@ EXPOSE 8081
 
 ENV JAVA_OPTS "-Xms128m -Xmx1536m"
 
-CMD ["java", "$JAVA_OPTS", "-jar", "/usr/src/app/site.jar"]
+CMD ["java", "-Xms128m -Xmx1536m", "-jar", "/usr/src/app/site.jar"]

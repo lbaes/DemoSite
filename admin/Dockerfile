@@ -8,5 +8,5 @@ EXPOSE 8083
 
 ENV JAVA_OPTS "-Xms128m -Xmx1536m"
 
-CMD ["java", "$JAVA_OPTS", "-jar", "/usr/src/app/admin.jar"]
+CMD ["java", "-Xms128m -Xmx1536m", "-jar", "/usr/src/app/admin.jar"]
 # java ${JAVA_OPTS} -jar "/usr/src/app/admin.jar"

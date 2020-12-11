@@ -1,5 +1,7 @@
 FROM openjdk:11-jre-slim-sid
+RUN useradd -r dockertom -u 950
 
+USER dockertom
 WORKDIR /usr/src/app
 COPY target/ROOT.jar site.jar
 
@@ -8,4 +10,4 @@ EXPOSE 8081
 
 ENV JAVA_OPTS "-Xms128m -Xmx1536m"
 
-# java ${JAVA_OPTS} -jar "/usr/src/app/site.jar"
+CMD ["java", "$JAVA_OPTS", "-jar", "/usr/src/app/site.jar"]
